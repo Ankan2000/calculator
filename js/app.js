@@ -35,10 +35,10 @@ class Calculator{
         if(isNaN(prev) || isNaN(current)) return;
         switch(this.operator){
             case '+':
-                res = prev + current;
+                res = add(prev, current);
                 break;
             case '-':
-                res = prev - current;
+                res = subtract(prev, current);
                 break;
             case '*':
                 res = prev * current;
@@ -145,3 +145,25 @@ document.addEventListener('keydown', e => {
 
     show();
 });
+
+function countDecimalDigits(number) {
+    let numString = number.toString();
+    let index = numString.indexOf('.');
+    if (index !== -1) {
+        return numString.slice(index + 1).length;
+    } else {
+        return 0;
+    }
+}
+
+function add(num1, num2) {
+    let baseTenMultiplier = Math.pow(10, Math.max(countDigits(num1), countDigits(num2)));
+    return (num1 * baseTenMultiplier + num2 * baseTenMultiplier)
+        / baseTenMultiplier;
+}
+
+function subtract(num1, num2) {
+    let baseTenMultiplier = Math.pow(10, Math.max(countDigits(num1), countDigits(num2)));
+    return (num1 * baseTenMultiplier - num2 * baseTenMultiplier)
+        / baseTenMultiplier;
+}

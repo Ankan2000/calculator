@@ -1,4 +1,4 @@
-const { countDigits, addFloat, subFloat } = require("./experimental");
+const { countDecimalDigits: countDigits , subtract: subFloat, add: addFloat } = require("./app");
 
 //! unit test on count digits
 test("should return 2.13 has 2 decimal places", () => {
@@ -61,5 +61,8 @@ test("should return 2341 - 435 = 1906", () => {
 })
 test("should return 2341 - 4435 = -2094", () => {
     expect(subFloat(2341, 4435)).toBe(-2094);
+})
+test("should return 1.03 ", () => {
+    expect(subFloat(2.06, 1.03)).toBe(1.03);
 })
 //=========================================================

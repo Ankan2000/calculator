@@ -50,7 +50,8 @@ class Calculator{
         this.currentRes = res;
         this.operator = null;
     }
-/*
+//todo fix this function
+    /*
 this functon is currently not working --->
     showComma(num){
         let temp='';
@@ -157,13 +158,15 @@ function countDecimalDigits(number) {
 }
 
 function add(num1, num2) {
-    let baseTenMultiplier = Math.pow(10, Math.max(countDigits(num1), countDigits(num2)));
+    let baseTenMultiplier = Math.pow(10, Math.max(countDecimalDigits(num1), countDecimalDigits(num2)));
     return (num1 * baseTenMultiplier + num2 * baseTenMultiplier)
         / baseTenMultiplier;
 }
 
 function subtract(num1, num2) {
-    let baseTenMultiplier = Math.pow(10, Math.max(countDigits(num1), countDigits(num2)));
+    let baseTenMultiplier = Math.pow(10, Math.max(countDecimalDigits(num1), countDecimalDigits(num2)));
     return (num1 * baseTenMultiplier - num2 * baseTenMultiplier)
         / baseTenMultiplier;
 }
+
+module.exports = { countDecimalDigits, add, subtract };

@@ -64,9 +64,9 @@ this functon is currently not working --->
     }
 */
     display(){
-        this.currentResText.innerText = this.currentRes;
+        this.currentResText.innerText = setComma(this.currentRes);
         if(this.operator != null)
-            this.previousResText.innerText = `${this.previousRes} ${this.operator}`;
+            this.previousResText.innerText = setComma(this.previousRes) + ` ${this.operator}`;
         else
             this.previousResText.innerHTML = '';
     }
@@ -168,5 +168,17 @@ function subtract(num1, num2) {
     return (num1 * baseTenMultiplier - num2 * baseTenMultiplier)
         / baseTenMultiplier;
 }
-
+function setComma(num) {
+    let numString = num.toString(), newString="";
+    const length = numString.length;
+    for (let i = length - 1; i >= 0; i = i - 3){
+        if (i<2) {
+            newString = numString.slice(0, i + 1) + "," + newString; 
+        }
+        else {
+            newString = numString.slice((i - 2), (i + 1)) + "," + newString;
+        }
+    }
+    return newString.slice(0, newString.length - 1);
+}
 module.exports = { countDecimalDigits, add, subtract };

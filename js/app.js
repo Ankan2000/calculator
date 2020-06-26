@@ -170,7 +170,11 @@ function subtract(num1, num2) {
 }
 function setComma(num) {
     let numString = num.toString(), newString="";
-    const length = numString.length;
+    let length = numString.length;
+
+    if (numString.indexOf('.') !== -1)
+        length = numString.indexOf('.');
+
     for (let i = length - 1; i >= 0; i = i - 3){
         if (i<2) {
             newString = numString.slice(0, i + 1) + "," + newString; 
@@ -179,6 +183,6 @@ function setComma(num) {
             newString = numString.slice((i - 2), (i + 1)) + "," + newString;
         }
     }
-    return newString.slice(0, newString.length - 1);
+    return newString.slice(0, newString.length - 1) + numString.slice(length);
 }
-module.exports = { countDecimalDigits, add, subtract };
+// module.exports = { countDecimalDigits, add, subtract };
